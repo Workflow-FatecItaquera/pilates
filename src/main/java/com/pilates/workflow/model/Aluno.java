@@ -4,27 +4,29 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Aluno")
 public class Aluno {
 	
 	@Id
-	private int id;
+	private String id;
 	private String nome;
 	private String email;
 	private String senha;
 	private String telefone;
 	private Date dataNascimento;
-	private int plano;
+	@DBRef
+	private Assinatura plano;
 	private String status;
 	private List<MetodoPagamento> pagamentos;
-	private List<PresencaEvento> historico;
+	private List<EventoAgendado> historico;
 	
 	public Aluno() {}
 	
-	public Aluno(int id, String nome, String email, String senha, String telefone, Date dataNascimento, int plano, String status,
-			List<MetodoPagamento> pagamentos, List<PresencaEvento> historico) {
+	public Aluno(String id, String nome, String email, String senha, String telefone, Date dataNascimento, Assinatura plano, String status,
+			List<MetodoPagamento> pagamentos, List<EventoAgendado> historico) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,10 +40,10 @@ public class Aluno {
 		this.historico = historico;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -74,10 +76,10 @@ public class Aluno {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public int getPlano() {
+	public Assinatura getPlano() {
 		return plano;
 	}
-	public void setPlano(int plano) {
+	public void setPlano(Assinatura plano) {
 		this.plano = plano;
 	}
 	public List<MetodoPagamento> getPagamentos() {
@@ -86,10 +88,10 @@ public class Aluno {
 	public void setPagamentos(List<MetodoPagamento> pagamentos) {
 		this.pagamentos = pagamentos;
 	}
-	public List<PresencaEvento> getHistorico() {
+	public List<EventoAgendado> getHistorico() {
 		return historico;
 	}
-	public void setHistorico(List<PresencaEvento> historico) {
+	public void setHistorico(List<EventoAgendado> historico) {
 		this.historico = historico;
 	}
 

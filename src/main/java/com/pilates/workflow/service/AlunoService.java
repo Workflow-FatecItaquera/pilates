@@ -21,5 +21,9 @@ public class AlunoService {
 	public Aluno register(Aluno aluno) {
 		return alunoRepository.save(aluno);
 	}
+	
+	public void delete(String id) {
+		alunoRepository.deleteById(id);
+	}
 
 }
