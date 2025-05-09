@@ -2,6 +2,8 @@ package com.pilates.workflow.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class EventoAgendadoService {
 	
 	public List<EventoAgendado> getAll(){
 		return eventoAgendadoRepository.findAll();
+	}
+	
+	public EventoAgendado getById(String id) {
+		return eventoAgendadoRepository.findById(id)
+		.orElseThrow(() -> new EntityNotFoundException("Evento com ID " + id + " não encontrado"));
 	}
 	
 	public EventoAgendado register(EventoAgendado eventoAgendado) {

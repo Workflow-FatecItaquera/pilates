@@ -20,22 +20,27 @@ public class AlunoController {
 	@Autowired
 	private AlunoService alunoService;
 	
-	@GetMapping("/alunos")
+	@GetMapping("/backend/alunos")
 	public List<Aluno> getAllAlunos(){
 		return alunoService.getAll();
 	}
 	
-	@PostMapping("/aluno")
+	@GetMapping("/backend/aluno/{id}")
+	public Aluno getById(@PathVariable String id) {
+		return alunoService.getById(id);
+	}
+	
+	@PostMapping("/backend/aluno")
 	public Aluno createAluno(@RequestBody Aluno aluno) {
 		return alunoService.register(aluno);
 	}
 	
-	@PutMapping("/aluno")
+	@PutMapping("/backend/aluno")
 	public Aluno updateAluno(@RequestBody Aluno aluno) {
 		return alunoService.register(aluno);
 	}
 	
-	@DeleteMapping("/aluno/{id}")
+	@DeleteMapping("/backend/aluno/{id}")
 	public String deleteAluno(@PathVariable String id) {
 		alunoService.delete(id);
 		return "Aluno removido com sucesso.";

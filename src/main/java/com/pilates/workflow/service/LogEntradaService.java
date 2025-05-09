@@ -2,6 +2,8 @@ package com.pilates.workflow.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class LogEntradaService {
 	
 	public List<LogEntrada> getAll(){
 		return logEntradaRepository.findAll();
+	}
+	
+	public LogEntrada getById(String id) {
+		return logEntradaRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Log com ID " + id + " não encontrado"));
 	}
 	
 	public LogEntrada register(LogEntrada logEntrada) {

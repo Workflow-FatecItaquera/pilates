@@ -20,22 +20,27 @@ public class InstrutorController {
 	@Autowired
 	private InstrutorService instrutorService;
 	
-	@GetMapping("/instrutores")
+	@GetMapping("/backend/instrutores")
 	public List<Instrutor> getAllInstrutores(){
 		return instrutorService.getAll();
 	}
 	
-	@PostMapping("/instrutor")
+	@GetMapping("/backend/instrutor/{id}")
+	public Instrutor getById(@PathVariable String id) {
+		return instrutorService.getById(id);
+	}
+	
+	@PostMapping("/backend/instrutor")
 	public Instrutor createInstrutor(@RequestBody Instrutor instrutor) {
 		return instrutorService.register(instrutor);
 	}
 	
-	@PutMapping("/instrutor")
+	@PutMapping("/backend/instrutor")
 	public Instrutor updateInstrutor(@RequestBody Instrutor instrutor) {
 		return instrutorService.register(instrutor);
 	}
 	
-	@DeleteMapping("/instrutor/{id}")
+	@DeleteMapping("/backend/instrutor/{id}")
 	public String deleteInstrutor(@PathVariable String id) {
 		instrutorService.delete(id);
 		return "Instrutor removido com sucesso.";

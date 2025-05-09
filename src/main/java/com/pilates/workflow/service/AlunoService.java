@@ -2,6 +2,8 @@ package com.pilates.workflow.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class AlunoService {
 	
 	public List<Aluno> getAll(){
 		return alunoRepository.findAll();
+	}
+	
+	public Aluno getById(String id) {
+		return alunoRepository.findById(id)
+				.orElseThrow(()-> new EntityNotFoundException("Aluno com ID '"+id+"' não foi encontrado."));
 	}
 	
 	public Aluno register(Aluno aluno) {

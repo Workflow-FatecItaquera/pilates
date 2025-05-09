@@ -2,6 +2,8 @@ package com.pilates.workflow.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class AssinaturaService {
 	
 	public List<Assinatura> getAll(){
 		return assinaturaRepository.findAll();
+	}
+	
+	public Assinatura getById(String id) {
+		return assinaturaRepository.findById(id)
+				.orElseThrow(()-> new EntityNotFoundException("Assinatura com ID '"+id+"' não foi encontrada.s"));
 	}
 	
 	public Assinatura register(Assinatura assinatura) {
