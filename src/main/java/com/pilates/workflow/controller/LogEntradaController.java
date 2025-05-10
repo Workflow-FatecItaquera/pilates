@@ -20,27 +20,27 @@ public class LogEntradaController {
 	@Autowired
 	private LogEntradaService logEntradaService;
 	
-	@GetMapping("/logs")
+	@GetMapping("/backend/logs")
 	public List<LogEntrada> getAllLogs(){
 		return logEntradaService.getAll();
 	}
 	
-	@GetMapping("/log/{id}")
+	@GetMapping("/backend/log/{id}")
 	public LogEntrada getById(@PathVariable String id) {
 		return logEntradaService.getById(id);
 	}
 	
-	@PostMapping("/log")
+	@PostMapping("/backend/log")
 	public LogEntrada createAssinatura(@RequestBody LogEntrada log) {
 		return logEntradaService.register(log);
 	}
 	
-	@PutMapping("/log")
+	@PutMapping("/backend/log")
 	public LogEntrada updateAssinatura(@RequestBody LogEntrada log) {
 		return logEntradaService.register(log);
 	}
 	
-	@DeleteMapping("/assinatura/{id}")
+	@DeleteMapping("/backend/log/{id}")
 	public String deleteAssinatura(@PathVariable String id) {
 		logEntradaService.delete(id);
 		return "Log removido com sucesso.";

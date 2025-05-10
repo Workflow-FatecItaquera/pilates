@@ -18,6 +18,10 @@ public class Assinatura {
 	
 	public Assinatura() {}
 	
+	public Assinatura(String id) {
+		this.id = id;
+	}
+	
 	public Assinatura(String id, String nome, double valor, int duracao, String descricao, List<String> beneficios) {
 		super();
 		this.id = id;
