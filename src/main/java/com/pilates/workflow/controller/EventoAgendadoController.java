@@ -35,12 +35,12 @@ public class EventoAgendadoController {
 		return eventoAgendadoService.register(evento);
 	}
 	
-	@PutMapping("/backend/assinatura")
+	@PutMapping("/backend/evento")
 	public EventoAgendado updateEvento(@RequestBody EventoAgendado evento) {
 		return eventoAgendadoService.register(evento);
 	}
 	
-	@DeleteMapping("/backend/assinatura/{id}")
+	@DeleteMapping("/backend/evento/{id}")
 	public String deleteEvento(@PathVariable String id) {
 		eventoAgendadoService.delete(id);
 		return "Evento removido com sucesso.";

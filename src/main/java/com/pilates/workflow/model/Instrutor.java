@@ -14,6 +14,10 @@ public class Instrutor {
 	private String telefone;
 	
 	public Instrutor() {}
+	
+	public Instrutor(String id) {
+		this.id = id;
+	}
 
 	public Instrutor(String id, String nome, String email, String senha, String telefone) {
 		super();
