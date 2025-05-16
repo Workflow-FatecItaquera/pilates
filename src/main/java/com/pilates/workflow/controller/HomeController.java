@@ -11,6 +11,7 @@ public class HomeController {
 		return "index"; //Essa rota aqui vai renderizar a home em templates/index.html
 	}
 	
+	@GetMapping("/assinaturas") 
 	public String assinaturas() {
 		return "assinaturas"; //Vai renderizar os planos disponíveis.
 	}
