@@ -10,12 +10,8 @@
 <body>
 	<th:block th:replace="fragments/header :: header"></th:block>
 	
-	<div id="cadastrarInstrutor">
-		<div class="d-flex flex-column align-items-center">
-			<div class="box container-branco"></div>
-			<div class="box container-roxo"></div>
-		</div>
-		<div id="form-cadastrar-instrutor" class="d-flex flex-column gap-2">
+	<div class="box-linear d-flex flex-column align-items-center">
+		<div class="form-cadastro d-flex flex-column gap-2">
 			<h4>Informações pessoais</h4>
 			<div class="d-flex flex-row justify-content-between align-items-center">
 				<div class="box-input d-flex flex-column align-items-start gap-2">
@@ -47,55 +43,52 @@
 					<input type="date" name="data-nascimento">
 				</div>
 			</div>
-			
-			<div class="cadastrar-instrutor d-flex flex-column gap-2">
-				<h4>Endereço</h4>
-				<div class="d-flex flex-row justify-content-between align-items-center">
-					<div class="box-input d-flex flex-column align-items-start gap-2">
-						<label>Endereço:</label>
-						<input type="text" name="endereco">
-					</div>
-					<div class="box-input d-flex flex-column align-items-start gap-2">
-						<label>CEP:</label>
-						<input type="text" name="cep">
-					</div>
+		</div>
+		<br>
+		<div class="form-cadastro d-flex flex-column gap-2">
+			<h4>Endereço</h4>
+			<div class="d-flex flex-row justify-content-between align-items-center">
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Endereço:</label>
+					<input type="text" name="endereco">
 				</div>
-					<div class="d-flex flex-row justify-content-between align-items-center">
-						<div class="box-input d-flex flex-column align-items-start gap-2">
-							<label>Número:</label>
-							<input type="text" name="numero">
-						</div>
-						<div class="box-input d-flex flex-column align-items-start gap-2">
-							<label>Bairro:</label>
-							<input type="text" name="bairro">
-						</div>
-					</div>
-					<div class="d-flex flex-row justify-content-between align-items-center">
-						<div class="box-input d-flex flex-column align-items-start gap-2">
-							<label>Cidade:</label>
-							<input type="text" name="cidade">
-						</div>
-						<div class="box-input d-flex flex-column align-items-start gap-2">
-							<label>Estado:</label>
-							<input type="text" name="estado">
-						</div>
-					</div>
-					<div class="d-flex flex-row justify-content-between align-items-center">
-						<div class="box-input d-flex flex-column align-items-start gap-2">
-							<label>Complemento: (opcional)</label>
-							<input style="min-width: 36rem;" type="text" name="complemento">
-						</div>
-					</div>
-					<div class="d-flex flex-row justify-content-between align-items-center">
-						<p class="link-info"><a>Para mais informações, clique aqui</a></p>
-						<button class="botao botao-preto" type="submit">Cadastrar</button>
-					</div>
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>CEP:</label>
+					<input type="text" name="cep">
 				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between align-items-center">
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Número:</label>
+					<input type="text" name="numero">
+				</div>
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Bairro:</label>
+					<input type="text" name="bairro">
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between align-items-center">
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Cidade:</label>
+					<input type="text" name="cidade">
+				</div>
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Estado:</label>
+					<input type="text" name="estado">
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between align-items-center">
+				<div class="box-input d-flex flex-column align-items-start gap-2">
+					<label>Complemento: (opcional)</label>
+					<input style="min-width: 36rem;" type="text" name="complemento">
+				</div>
+			</div>
+			<div class="d-flex flex-col justify-content-between align-items-end">
+				<p class="link-info"><a>Para mais informações, clique aqui</a></p>
+				<button class="botao botao-preto" type="submit">Cadastrar</button>
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 	<script>
