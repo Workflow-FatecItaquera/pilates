@@ -39,6 +39,11 @@ a{
 	text-decoration: none!important;
 }
 
+p{
+	margin: 0rem!important;
+	font-family: var(--font-main);
+}
+
 .botao{
 	border-radius: 2rem;
 	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -184,8 +189,8 @@ nav > ul > li{
 
 /*Cadastrar instrutor*/
 .box-linear{
-	padding-top: 1rem;
-	height: 50rem;
+	padding: 1rem 0rem 1rem 0rem;
+	height: 100%;
 	width: 100%;
 	background: linear-gradient(to bottom, #F6F6F6 50%, #93A1E5 50%);
 }
@@ -209,13 +214,14 @@ nav > ul > li{
 	font-weight: 600;
 }
 
+
 .container-roxo{
 	background: linear-gradient(to right, #93A1E5, #A2B0F0);
 }
 
-.box-input > input{
+.box-input > input, .box-input > select{
 	font-family: var(--font-alt);
-	border: 0.1rem solid var(--purple-100);
+	border: 0.1rem solid #93A1E5;
 	border-radius: 0.5rem;
 	min-width: 17rem;
 	padding: 0.2rem 0.8rem 0.2rem 0.8rem;
@@ -223,7 +229,8 @@ nav > ul > li{
 
 .box-input > label{
 	font-family: var(--font-main);
-	font-size: 1rem;
+	font-size: 0.9rem;
+	font-weight: 400;
 }
 
 
@@ -233,10 +240,45 @@ nav > ul > li{
 	color: var(--purple-100)!important; 
 	font-size: 0.9rem;
 	text-decoration: none;
-	cursor: pointer;
 }
 
 p.link-info{
 	margin-bottom: 0rem;
 }
 
+/*Cadastrar Aluno: assinaturas*/
+
+.form-cadastro > div > h3{
+	color: #8A97D5;
+	font-weight: 700;
+	font-family: var(--font-alt);
+}
+
+.form-descricao{
+	font-style: italic;
+	font-weight: 500;
+	font-size: 0.9rem;
+	padding-bottom: 0.5rem;
+}
+
+.secao{
+	cursor: pointer;
+}
+
+.metodo-pagamento{
+	background-color: rgb(240, 240, 240);
+	padding: 0.5rem 0.9rem 0.5rem 0.9rem;
+	border-radius: 0.4rem;
+	min-width: 17rem;
+	max-width: 100%;
+	cursor: pointer;
+}
+
+.link-pagamento > a{
+	font-family: var(--font-alt);
+	font-style: italic;
+	color: var(--color-primary)!important; 
+	font-size: 0.9rem;
+	text-decoration: none;
+	cursor: pointer;
+}

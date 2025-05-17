@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AlunoRoute {
 	@GetMapping("/cadastrarAluno")
-	public String cadastrarInstrutor() {
-		return "cadastrarInstrutor";
+	public String cadastrarAluno() {
+		return "cadastrarAluno";
 	}
 	
 }
