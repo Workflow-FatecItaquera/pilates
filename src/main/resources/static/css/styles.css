@@ -235,7 +235,7 @@ nav > ul > li{
 
 
 .link-info > a{
-	font-family: var(--font-alt);
+	font-family: var(--font-main);
 	font-style: italic;
 	color: var(--purple-100)!important; 
 	font-size: 0.9rem;
@@ -255,7 +255,6 @@ p.link-info{
 }
 
 .form-descricao{
-	font-style: italic;
 	font-weight: 500;
 	font-size: 0.9rem;
 	padding-bottom: 0.5rem;
@@ -275,10 +274,62 @@ p.link-info{
 }
 
 .link-pagamento > a{
-	font-family: var(--font-alt);
+	font-family: var(--font-main);
 	font-style: italic;
 	color: var(--color-primary)!important; 
 	font-size: 0.9rem;
 	text-decoration: none;
 	cursor: pointer;
 }
+
+/*Login*/
+#box-login{
+	background-color: var(--color-secondary);
+	padding: 2rem;
+	border-radius: 0.4rem;
+}
+
+#box-footer-login{
+	padding-top: 1rem;
+}
+
+#box-footer-login > p > a{
+	color: var(--purple-100);
+	font-style: italic;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+#box-footer-login > .botao-preto{
+	padding: 0.5rem 2.8rem 0.5rem 2.8rem;
+	font-family: var(--font-main);
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+#box-login > .box-direita > .box-input > label{
+	padding-top: 0.6rem;
+	font-weight: 500;
+	color: rgb(118, 116, 120);
+}
+
+#box-login > .box-direita > .box-input > input{
+	background-color: var(--color-secondary);
+}
+
+.box-descricao h1{
+	font-family: var(--font-alt);
+	font-weight: 600;
+}
+
+.box-descricao > p{
+	padding-bottom: 1rem;
+}
+
+.mensagem-erro{
+	font-family: var(--font-main);
+	color: rgb(239, 52, 52);
+	font-size: 0.7rem;
+	padding: 0.1rem;
+}
+
