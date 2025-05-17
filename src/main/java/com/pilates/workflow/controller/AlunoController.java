@@ -19,6 +19,7 @@ public class AlunoController {
 	
 	@Autowired
 	private AlunoService alunoService;
+
 	
 	@GetMapping("/backend/alunos")
 	public List<Aluno> getAllAlunos(){
