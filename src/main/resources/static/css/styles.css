@@ -333,3 +333,41 @@ p.link-info{
 	padding: 0.1rem;
 }
 
+
+/*Dashboard*/
+#box-dashboard{
+	width: 100%;
+	padding: 2rem 5rem 2rem 5rem;
+}
+
+#box-dashboard > h1{
+	font-family: var(--font-alt);
+	font-weight: 600;
+}
+
+
+.secoes > .secao{
+	background-color: #fff;
+	padding: 1.5rem;
+	border-radius: 0.4rem;
+	width: 20%;
+}
+
+.secao > .secao-imagem{
+	width: 180px;
+	height: 180px;
+}
+
+.secoes{
+	padding: 2rem;
+}
+
+.secao > h5{
+	font-family: var(--font-alt);
+	font-weight: 600;
+}
+
+.secao > p{
+	font-family: var(--font-main);
+	font-size: 0.9rem;
+}
