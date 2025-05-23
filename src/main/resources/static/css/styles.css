@@ -71,9 +71,16 @@ nav > ul > li{
 	cursor: pointer;
 }
 
+nav > ul > li > a{
+	color: var(--color-primary);
+}
+
+nav > ul > li.link-assinaturas > a {
+	color: var(--color-secondary);
+}
+
 .link-assinaturas{
 	background: linear-gradient(to right, #303030, #3F3E40);
-	color: var(--color-secondary);
 	padding: 0.3rem 1rem 0.3rem 1.4rem;
 	border-radius: 2rem;
 }
