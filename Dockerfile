@@ -1,21 +1,18 @@
-# Usa uma imagem base com Java 17 (oficial da Eclipse Temurin)
 FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
 
-# Diretório de trabalho dentro do container
-WORKDIR /src
-
-# Copia os arquivos necessários para o build
+# Copia os arquivos do Maven Wrapper e dá permissão de execução
 COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+COPY mvnw .
+RUN chmod +x mvnw  # 👈 Isso resolve o erro!
 
-# Baixa as dependências (cacheável)
+# Copia o POM e baixa as dependências
+COPY pom.xml .
 RUN ./mvnw dependency:go-offline
 
-# Copia o código fonte
+# Copia o código e faz o build
 COPY src ./src
-
-# Compila o projeto e gera o JAR
 RUN ./mvnw package -DskipTests
 
-# Comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "target/pilates-pi-0.0.1-SNAPSHOT.jar"]  
+# Comando para rodar
+ENTRYPOINT ["java", "-jar", "target/pilates-pi-0.0.1-SNAPSHOT.jar"]
