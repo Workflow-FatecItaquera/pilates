@@ -4,7 +4,7 @@ WORKDIR /app
 # Copia os arquivos do Maven Wrapper e dá permissão de execução
 COPY .mvn/ .mvn
 COPY mvnw .
-RUN chmod +x mvnw  # 👈 Isso resolve o erro!
+RUN chmod +x mvnw
 
 # Copia o POM e baixa as dependências
 COPY pom.xml .
