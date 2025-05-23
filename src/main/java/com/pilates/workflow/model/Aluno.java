@@ -22,11 +22,16 @@ public class Aluno {
 	private String status;
 	private List<MetodoPagamento> pagamentos;
 	private List<EventoAgendado> historico;
+	private Endereco endereco;
 	
 	public Aluno() {}
 	
+	public Aluno(String id) {
+		this.id = id;
+	}
+	
 	public Aluno(String id, String nome, String email, String senha, String telefone, Date dataNascimento, Assinatura plano, String status,
-			List<MetodoPagamento> pagamentos, List<EventoAgendado> historico) {
+			List<MetodoPagamento> pagamentos, List<EventoAgendado> historico, Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,6 +43,7 @@ public class Aluno {
 		this.status = status;
 		this.pagamentos = pagamentos;
 		this.historico = historico;
+		this.endereco = endereco;
 	}
 	
 	public String getId() {
@@ -101,6 +107,14 @@ public class Aluno {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 
