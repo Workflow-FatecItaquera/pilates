@@ -12,6 +12,7 @@ public class Instrutor {
 	private String email;
 	private String senha;
 	private String telefone;
+	private Endereco endereco;
 	
 	public Instrutor() {}
 	
@@ -19,13 +20,14 @@ public class Instrutor {
 		this.id = id;
 	}
 
-	public Instrutor(String id, String nome, String email, String senha, String telefone) {
+	public Instrutor(String id, String nome, String email, String senha, String telefone, Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.telefone = telefone;
+		this.endereco = endereco;
 	}
 
 	public String getId() {
@@ -66,6 +68,14 @@ public class Instrutor {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 	

@@ -14,15 +14,14 @@ public class EventoAgendado {
 	private String id;
     private Date data;
     private String descricao;
-    @DBRef
-    private List<Aluno> alunos;
+    private List<String> alunos;
     @DBRef
     private Instrutor instrutor;
     private String tipo;
 
     public EventoAgendado() {}
 
-	public EventoAgendado(String id, Date data, String descricao, List<Aluno> alunos, Instrutor instrutor,
+	public EventoAgendado(String id, Date data, String descricao, List<String> alunos, Instrutor instrutor,
 			String tipo) {
 		super();
 		this.id = id;
@@ -57,11 +56,11 @@ public class EventoAgendado {
 		this.descricao = descricao;
 	}
 
-	public List<Aluno> getAlunos() {
+	public List<String> getAlunos() {
 		return alunos;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
+	public void setAlunos(List<String> alunos) {
 		this.alunos = alunos;
 	}
 
