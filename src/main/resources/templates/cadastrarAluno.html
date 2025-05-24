@@ -22,31 +22,31 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CPF</label>
-						<input type="text" name="cpf" placeholder="Seu CPF..." required>
+						<input type="text" th:field="*{cpf}" name="cpf" placeholder="Seu CPF..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>E-mail</label>
-						<input type="email" name="email" placeholder="exemplo@email.com" required>
+						<input type="email" name="email" th:field="*{email}" placeholder="exemplo@email.com" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Nome</label>
-						<input type="text" name="nome" placeholder="Seu nome..." required>
+						<input type="text" name="nome" th:field="*{nome}" placeholder="Seu nome..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Data de nascimento</label>
-						<input type="date" name="data-nascimento" required>
+						<input type="date" th:field="*{dataNascimento}" name="data-nascimento" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Sobrenome</label>
-						<input type="text" name="sobrenome" placeholder="Seu sobrenome..." required>
+						<input type="text" name="sobrenome" th:field="*{sobrenome}" placeholder="Seu sobrenome..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Assinatura</label>
-						<select name="assinaturas">
+						<select name="assinaturas" th:field="*{plano}">
 							<option th:each="assinatura : ${assinaturas}" th:value="${assinatura.id}" th:text="${assinatura.nome}"></option>
 							<!-- <option th:value="'Puppy'" th:text="'R$119,90 - Puppy'"></option>						
 							<option th:value="'Amateur'" th:text="'R$219,90 - Amateur'"></option>
@@ -57,41 +57,41 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Telefone</label>
-						<input type="text" name="telefone" placeholder="Número com seu DDD..." required>
+						<input type="text" name="telefone" th:field="*{telefone}" placeholder="Número com seu DDD..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Endereço</label>
-						<input type="text" name="endereco" placeholder="Nome da rua..." required>
+						<input type="text" name="endereco" th:field="*{endereco.logradouro}" placeholder="Nome da rua..." required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CEP</label>
-						<input type="text" name="cep" placeholder="Seu CEP..." required>
+						<input type="text" name="cep" th:field="*{endereco.cep}" placeholder="Seu CEP..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Número</label>
-						<input type="text" name="numero" placeholder="O número da sua casa..." required>
+						<input type="text" name="numero" th:field="*{endereco.numero}" placeholder="O número da sua casa..." required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Estado</label>
-						<input type="text" name="estado" placeholder="Estado em que mora..." required>
+						<input type="text" name="estado" th:field="*{endereco.estado}" placeholder="Estado em que mora..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Cidade</label>
-						<input type="text" name="cidade" placeholder="Cidade em que mora..." required>
+						<input type="text" name="cidade" th:field="*{endereco.cidade}" placeholder="Cidade em que mora..." required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Bairro</label>
-						<input type="text" name="bairro" placeholder="Bairro em que mora..." required>
+						<input type="text" name="bairro" th:field="*{endereco.bairro}" placeholder="Bairro em que mora..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Complemento</label>
-						<input type="text" name="complemento" placeholder="Se necessário... Ex: Apto 2A">
+						<input type="text" name="complemento" th:field="*{endereco.complemento}" placeholder="Se necessário... Ex: Apto 2A">
 					</div>
 				</div>						
 			</div>
