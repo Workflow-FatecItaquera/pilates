@@ -6,6 +6,8 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.pilates.workflow.model.Instrutor;
 import com.pilates.workflow.repository.InstrutorRepository;
@@ -15,6 +17,7 @@ public class InstrutorService {
 	
 	@Autowired
 	InstrutorRepository instrutorRepository;
+	PasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	public List<Instrutor> getAll(){
 		return instrutorRepository.findAll();
@@ -31,6 +34,15 @@ public class InstrutorService {
 	
 	public void delete(String id) {
 		instrutorRepository.deleteById(id);
+	}
+
+	public boolean login(String email, String senha){
+		Instrutor instrutor = instrutorRepository.findByEmail(email);
+		if(instrutor==null){
+			return false;
+		} else {
+			return encoder.matches(senha, instrutor.getSenha());
+		}
 	}
 
 }

@@ -16,7 +16,6 @@ public class AlunoRoute {
 
 	@Autowired
 	private AssinaturaService assinaturaService;
-	@Autowired
 	private AlunoService alunoService;
 
 	@GetMapping("/cadastrarAluno")

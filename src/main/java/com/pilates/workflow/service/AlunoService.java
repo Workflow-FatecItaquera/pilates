@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pilates.workflow.model.Aluno;
@@ -15,6 +17,7 @@ public class AlunoService {
 	
 	@Autowired
 	AlunoRepository alunoRepository;
+	PasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	public List<Aluno> getAll(){
 		return alunoRepository.findAll();
@@ -23,6 +26,15 @@ public class AlunoService {
 	public Aluno getById(String id) {
 		return alunoRepository.findById(id)
 				.orElseThrow(()-> new EntityNotFoundException("Aluno com ID '"+id+"' não foi encontrado."));
+	}
+
+	public boolean login(String email, String senha){
+		Aluno aluno = alunoRepository.findByEmail(email);
+		if(aluno==null){
+			return false;
+		} else {
+			return encoder.matches(senha, aluno.getSenha());
+		}
 	}
 	
 	public Aluno register(Aluno aluno) {
