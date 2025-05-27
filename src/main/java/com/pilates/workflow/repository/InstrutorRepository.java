@@ -6,4 +6,6 @@ import com.pilates.workflow.model.Instrutor;
 
 public interface InstrutorRepository extends MongoRepository<Instrutor,String> {
 
+    Instrutor findByEmail(String email);
+
 }
