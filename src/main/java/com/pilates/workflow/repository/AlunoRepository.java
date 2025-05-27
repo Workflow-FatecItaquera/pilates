@@ -6,4 +6,6 @@ import com.pilates.workflow.model.Aluno;
 
 public interface AlunoRepository extends MongoRepository<Aluno, String> {
 
+    Aluno findByEmail(String email);
+
 }

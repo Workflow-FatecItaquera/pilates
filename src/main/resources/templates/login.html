@@ -12,7 +12,7 @@
 	<th:block th:replace="fragments/header :: header"></th:block>
 	
 	<div class="box-linear d-flex flex-column align-items-center">
-		<div id="box-login" data-aos="flip-right" data-aos-duration="1200">
+		<form id="box-login" th:action="@{/logar}" method="post" data-aos="flip-right" data-aos-duration="1200">
 			<div class="box-esquerda d-flex justify-content-center align-items-center">
 				<img class="" th:src="@{/images/image-login.svg}" alt="Seção">
 			</div>
@@ -24,14 +24,14 @@
 				
 				<div class="box-input d-flex flex-column justify-content-start gap-2">
 					<label>E-mail</label>
-					<input type="text" name="email">
-					<p class="mensagem-erro">e-mail inválido (exemplo erro)</p>
+					<input type="text" name="email" placeholder="Digite seu e-mail..." required>
+					<p class="mensagem-erro">e-mail inválido</p>
 				</div>
 				
 				<div class="box-input d-flex flex-column justify-content-start gap-2">
 					<label>Senha</label>
-					<input type="password" name="senha">
-					<p class="mensagem-erro erro-senha"></p>
+					<input type="password" name="senha" placeholder="Digite sua senha..." required>
+					<p class="mensagem-erro erro-senha">senha incorreta</p>
 				</div>
 				
 				<p class="mensagem-erro"></p>
@@ -40,9 +40,6 @@
 					<button class="botao botao-preto">Entrar</button>
 				</div>
 			</div>
-		</div>
-
-		<form id="login" action="#" method="post">
 		</form>
 	</div>
 	
@@ -52,5 +49,7 @@
 	</script>
 	<th:block th:replace="fragments/footer :: footer"></th:block>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+	<script th:src="@{/js/sweetalert.js}"></script>
+	<script th:src="@{/js/login.js}"></script>
 </body>
 </html>
