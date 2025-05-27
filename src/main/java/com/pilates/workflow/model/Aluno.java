@@ -33,6 +33,11 @@ public class Aluno {
 	public Aluno(String id) {
 		this.id = id;
 	}
+
+	public Aluno(String email, String senha){
+		this.email = email;
+		this.senha = senha;
+	}
 	
 	public Aluno(String id, String nome, String sobrenome, String cpf, String email, String senha, String telefone, Date dataNascimento, Assinatura plano, String status,
 			List<MetodoPagamento> pagamentos, List<EventoAgendado> historico, Endereco endereco) {

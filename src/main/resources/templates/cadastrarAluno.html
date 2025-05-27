@@ -12,17 +12,17 @@
 	<th:block th:replace="fragments/header :: header"></th:block>
 	
 	<div class="box-linear d-flex flex-column align-items-center">
-		<form th:action="@{/backend/aluno}" th:object="${aluno}" method="post">
+		<form id="cadastroAluno" th:action="@{/backend/aluno}" th:object="${aluno}" method="post">
 			<div class="form-cadastro d-flex flex-column gap-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<h3>Assinaturas</h3>
 					<img class="icon secao" th:src="@{/images/icon-setabaixo.png}" alt="Seção">
 				</div>
-				<p class="form-descricao">Você selecionou assinatura {assinatura}!</p>
+				<p id="form-assinatura" class="form-descricao">Você selecionou assinatura {assinatura}!</p>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CPF</label>
-						<input type="text" th:field="*{cpf}" name="cpf" placeholder="Seu CPF..." required>
+						<input type="text" th:field="*{cpf}" name="cpf" placeholder="Seu CPF..." oninput="mascaraCPF(this)" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>E-mail</label>
@@ -46,8 +46,8 @@
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Assinatura</label>
-						<select name="assinaturas" th:field="*{plano}">
-							<option th:each="assinatura : ${assinaturas}" th:value="${assinatura.id}" th:text="${assinatura.nome}"></option>
+						<select id="select-assinatura" name="assinaturas" th:field="*{plano}" onchange="atualizarAssinaturaSelecionada()">
+							<option th:each="assinatura : ${assinaturas}" th:value="${assinatura.id}" th:text="|R$ ${#numbers.formatDecimal(assinatura.valor, 1, 'COMMA', 2, 'POINT')} - ${assinatura.nome}|"></option>
 							<!-- <option th:value="'Puppy'" th:text="'R$119,90 - Puppy'"></option>						
 							<option th:value="'Amateur'" th:text="'R$219,90 - Amateur'"></option>
 							<option th:value="'Premium'" th:text="'R$339,90 - Premium'"></option> -->
@@ -57,17 +57,17 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Telefone</label>
-						<input type="text" name="telefone" th:field="*{telefone}" placeholder="Número com seu DDD..." required>
+						<input type="text" name="telefone" th:field="*{telefone}" placeholder="Número com seu DDD..." oninput="mascaraCelular(this)" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Endereço</label>
-						<input type="text" name="endereco" th:field="*{endereco.logradouro}" placeholder="Nome da rua..." required>
+						<input id="endereco-logradouro" type="text" name="endereco" th:field="*{endereco.logradouro}" placeholder="Nome da rua..." required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CEP</label>
-						<input type="text" name="cep" th:field="*{endereco.cep}" placeholder="Seu CEP..." required>
+						<input type="text" name="cep" th:field="*{endereco.cep}" placeholder="Seu CEP..." oninput="mascaraCEP(this)" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Número</label>
@@ -77,17 +77,17 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Estado</label>
-						<input type="text" name="estado" th:field="*{endereco.estado}" placeholder="Estado em que mora..." required>
+						<input id="endereco-estado" type="text" name="estado" th:field="*{endereco.estado}" placeholder="Estado em que mora..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Cidade</label>
-						<input type="text" name="cidade" th:field="*{endereco.cidade}" placeholder="Cidade em que mora..." required>
+						<input id="endereco-cidade" type="text" name="cidade" th:field="*{endereco.cidade}" placeholder="Cidade em que mora..." required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Bairro</label>
-						<input type="text" name="bairro" th:field="*{endereco.bairro}" placeholder="Bairro em que mora..." required>
+						<input id="endereco-bairro" type="text" name="bairro" th:field="*{endereco.bairro}" placeholder="Bairro em que mora..." required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Complemento</label>
@@ -129,5 +129,8 @@
 	</script>
 	<th:block th:replace="fragments/footer :: footer"></th:block>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+	<script th:src="@{/js/sweetalert.js}"></script>
+	<script th:src="@{/js/alerts.js}" type="module"></script>
+	<script th:src="@{/js/formHandler.js}"></script>
 </body>
 </html>
