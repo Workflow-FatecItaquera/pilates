@@ -54,3 +54,10 @@ function mascaraCelular(campo) {
 
     campo.value = tel;
 }
+
+function atualizarAssinaturaSelecionada() {
+    let assinatura = document.querySelector("#select-assinatura")
+    document.querySelector("#form-assinatura").innerText = ` Você selecionou a assinatura ${assinatura.options[assinatura.selectedIndex].text}`;
+}
+
+window.addEventListener("DOMContentLoaded", atualizarAssinaturaSelecionada);
