@@ -15,7 +15,7 @@ public class AccessConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/","/cadastrarAluno","/cadastrarInstrutor","/login", "/css/**","/js/**","/images/**").permitAll()
+                .requestMatchers("/","/cadastrarAluno", "/cadastrarAula", "/cadastrarInstrutor","/login", "/css/**","/js/**","/images/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
