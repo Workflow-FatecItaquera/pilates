@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 //Informa ao Spring que se trata de uma classe @Controller com requisições HTTP.
 public class HomeRoute {
 	@GetMapping

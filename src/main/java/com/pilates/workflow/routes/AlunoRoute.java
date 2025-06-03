@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.pilates.workflow.service.AssinaturaService;
+import com.pilates.workflow.service.EmailService;
 import com.pilates.workflow.service.AlunoService;
 import com.pilates.workflow.model.Aluno;
 
@@ -17,6 +18,7 @@ public class AlunoRoute {
 	@Autowired
 	private AssinaturaService assinaturaService;
 	private AlunoService alunoService;
+	private EmailService emailService;
 
 	@GetMapping("/cadastrarAluno")
 	public String cadastrarAluno(Model model) {
