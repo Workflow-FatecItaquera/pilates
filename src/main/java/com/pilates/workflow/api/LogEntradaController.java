@@ -1,4 +1,4 @@
-package com.pilates.workflow.controller;
+package com.pilates.workflow.api;
 
 import java.util.List;
 
@@ -9,38 +9,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pilates.workflow.model.LogEntrada;
 import com.pilates.workflow.service.LogEntradaService;
 
 @RestController
+@RequestMapping("/api")
 public class LogEntradaController {
 	
 	@Autowired
 	private LogEntradaService logEntradaService;
 	
-	@GetMapping("/backend/logs")
+	@GetMapping("/logs")
 	public List<LogEntrada> getAllLogs(){
 		return logEntradaService.getAll();
 	}
 	
-	@GetMapping("/backend/log/{id}")
+	@GetMapping("/log/{id}")
 	public LogEntrada getById(@PathVariable String id) {
 		return logEntradaService.getById(id);
 	}
 	
-	@PostMapping("/backend/log")
+	@PostMapping("/log")
 	public LogEntrada createAssinatura(@RequestBody LogEntrada log) {
 		return logEntradaService.register(log);
 	}
 	
-	@PutMapping("/backend/log")
+	@PutMapping("/log")
 	public LogEntrada updateAssinatura(@RequestBody LogEntrada log) {
 		return logEntradaService.register(log);
 	}
 	
-	@DeleteMapping("/backend/log/{id}")
+	@DeleteMapping("/log/{id}")
 	public String deleteAssinatura(@PathVariable String id) {
 		logEntradaService.delete(id);
 		return "Log removido com sucesso.";

@@ -1,4 +1,4 @@
-package com.pilates.workflow.controller;
+package com.pilates.workflow.api;
 
 import java.util.List;
 
@@ -9,38 +9,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pilates.workflow.model.Instrutor;
 import com.pilates.workflow.service.InstrutorService;
 
 @RestController
+@RequestMapping("/api")
 public class InstrutorController {
 	
 	@Autowired
 	private InstrutorService instrutorService;
 	
-	@GetMapping("/backend/instrutores")
+	@GetMapping("/instrutores")
 	public List<Instrutor> getAllInstrutores(){
 		return instrutorService.getAll();
 	}
 	
-	@GetMapping("/backend/instrutor/{id}")
+	@GetMapping("/instrutor/{id}")
 	public Instrutor getById(@PathVariable String id) {
 		return instrutorService.getById(id);
 	}
 	
-	@PostMapping("/backend/instrutor")
+	@PostMapping("/instrutor")
 	public Instrutor createInstrutor(@RequestBody Instrutor instrutor) {
 		return instrutorService.register(instrutor);
 	}
 	
-	@PutMapping("/backend/instrutor")
+	@PutMapping("/instrutor")
 	public Instrutor updateInstrutor(@RequestBody Instrutor instrutor) {
 		return instrutorService.register(instrutor);
 	}
 	
-	@DeleteMapping("/backend/instrutor/{id}")
+	@DeleteMapping("/instrutor/{id}")
 	public String deleteInstrutor(@PathVariable String id) {
 		instrutorService.delete(id);
 		return "Instrutor removido com sucesso.";
