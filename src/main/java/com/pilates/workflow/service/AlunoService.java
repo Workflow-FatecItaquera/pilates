@@ -28,6 +28,14 @@ public class AlunoService {
 				.orElseThrow(()-> new EntityNotFoundException("Aluno com ID '"+id+"' não foi encontrado."));
 	}
 
+	public boolean existsByEmail(String email){
+		if(alunoRepository.findByEmail(email)!=null){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public Aluno getByEmail(String email){
 		return alunoRepository.findByEmail(email);
 	}

@@ -27,6 +27,10 @@ public class InstrutorService {
 	    return instrutorRepository.findById(id)
 	        .orElseThrow(() -> new EntityNotFoundException("Instrutor com ID " + id + " não encontrado"));
 	}
+
+	public Instrutor getByEmail(String email){
+		return instrutorRepository.findByEmail(email);
+	}
 	
 	public Instrutor register(Instrutor instrutor) {
 		return instrutorRepository.save(instrutor);
@@ -34,6 +38,14 @@ public class InstrutorService {
 	
 	public void delete(String id) {
 		instrutorRepository.deleteById(id);
+	}
+
+	public boolean existsByEmail(String email){
+		if(instrutorRepository.findByEmail(email)!=null){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean login(String email, String senha){

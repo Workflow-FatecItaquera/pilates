@@ -12,7 +12,7 @@
 	<th:block th:replace="fragments/header :: header"></th:block>
 	
 	<div class="box-linear d-flex flex-column align-items-center">
-		<form id="box-login" th:action="@{/logar}" method="post" data-aos="flip-right" data-aos-duration="1200">
+		<form id="box-login" th:action="@{/login}" method="post" data-aos="flip-right" data-aos-duration="1200">
 			<div class="box-esquerda d-flex justify-content-center align-items-center">
 				<img class="" th:src="@{/images/image-login.svg}" alt="Seção">
 			</div>
@@ -24,13 +24,13 @@
 				
 				<div class="box-input d-flex flex-column justify-content-start gap-2">
 					<label>E-mail</label>
-					<input type="text" name="email" placeholder="Digite seu e-mail..." required>
+					<input type="text" name="username" placeholder="Digite seu e-mail..." required>
 					<p class="mensagem-erro">e-mail inválido</p>
 				</div>
 				
 				<div class="box-input d-flex flex-column justify-content-start gap-2">
 					<label>Senha</label>
-					<input type="password" name="senha" placeholder="Digite sua senha..." required>
+					<input type="password" name="password" placeholder="Digite sua senha..." required>
 					<p class="mensagem-erro erro-senha">senha incorreta</p>
 				</div>
 				

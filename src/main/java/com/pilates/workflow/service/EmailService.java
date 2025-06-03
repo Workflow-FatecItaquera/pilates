@@ -27,7 +27,7 @@ public class EmailService {
             smm.setFrom(remetente);
             smm.setTo(aluno.getEmail());
             smm.setSubject("Crie a sua senha para completar seu cadastro!");
-            smm.setText("Crie sua senha acessando "+site_url+"/alunoSenha?token="+token);
+            smm.setText("Crie sua senha acessando "+local_url+"/alunoSenha?token="+token);
             mailSender.send(smm);
             return true;
         } catch (Exception e) {
