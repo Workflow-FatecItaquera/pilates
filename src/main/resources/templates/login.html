@@ -59,6 +59,15 @@
 			allowEscapeKey: false
 		})
 	</script>
+	<script th:if="${senhaCriada}">
+		Swal.fire({
+			title:'Senha criada!',
+			text:'Agora, só falta acessar a plataforma!',
+			icon:'success',
+			allowOutsideClick: false,
+			allowEscapeKey: false
+		})
+	</script>
 	<script th:src="@{/js/login.js}"></script>
 </body>
 </html>
