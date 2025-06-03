@@ -18,7 +18,7 @@
 					<h1>Crie sua senha</h1>
 					<p>Para garantir seu acesso à plataforma</p>				
 				</div>
-				<input type="hidden" name="token" value="${param.token}" />
+				<input type="hidden" name="token" th:value="${param.token}" />
 				<div class="box-input d-flex flex-column justify-content-start gap-2">
 					<label>Senha</label>
 					<input type="password" th:value="${senha}" name="senha" placeholder="Digite sua senha..." required>

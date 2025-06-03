@@ -11,6 +11,9 @@ import com.pilates.workflow.model.Aluno;
 @Service
 public class EmailService {
 
+    private String local_url = "http://localhost:8080";
+    private String site_url = "https://pilates-s9q6.onrender.com";
+
     @Autowired
     private JavaMailSender mailSender;
 
@@ -24,7 +27,7 @@ public class EmailService {
             smm.setFrom(remetente);
             smm.setTo(aluno.getEmail());
             smm.setSubject("Crie a sua senha para completar seu cadastro!");
-            smm.setText("Crie sua senha acessando https://pilates-s9q6.onrender.com/alunoSenha?aluno="+token);
+            smm.setText("Crie sua senha acessando "+site_url+"/alunoSenha?token="+token);
             mailSender.send(smm);
             return true;
         } catch (Exception e) {

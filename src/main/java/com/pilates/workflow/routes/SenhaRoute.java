@@ -31,9 +31,7 @@ public class SenhaRoute {
 
     @PostMapping("/aluno/senha")
     public String criarSenha(@RequestParam("token") String token, @RequestParam("senha") String senha, RedirectAttributes redirectAttributes) {
-        if(!tokenService.isTokenValid(token)){
-            return "redirect:/";
-        } else {
+        if(tokenService.isTokenValid(token)){
             String email = tokenService.extractEmail(token);
             Aluno aluno = alunoService.getByEmail(email);
             aluno.setSenha(senha);
@@ -41,6 +39,9 @@ public class SenhaRoute {
 
             redirectAttributes.addFlashAttribute("senhaCriada",true);
             return "redirect:/login";
+        } else {
+            redirectAttributes.addFlashAttribute("falhou",token);
+            return "redirect:/";
         }
     }
     

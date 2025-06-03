@@ -42,6 +42,9 @@ public class AlunoService {
 	}
 	
 	public Aluno register(Aluno aluno) {
+		if(aluno.getSenha()!=null){
+			aluno.setSenha(encoder.encode(aluno.getSenha()));
+		}
 		return alunoRepository.save(aluno);
 	}
 	
