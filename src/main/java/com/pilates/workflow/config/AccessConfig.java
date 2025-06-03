@@ -15,7 +15,19 @@ public class AccessConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/","/cadastrarAluno","/cadastrarInstrutor","/login", "/css/**","/js/**","/images/**").permitAll()
+                .requestMatchers(
+                    "/", // Homepage
+                    "/assinaturas", // Assinaturas
+                    "/api/**", // Rotas da API REST
+                    "/cadastrarAluno", // Form de cadastro dos alunos
+                    "/create/aluno", // Ação de cadastro do aluno
+                    "/cadastrarInstrutor", // Form do cadastro de instrutores
+                    "/login", // Tela de login
+                    "/logar", // Ação do login
+                    "/css/**", // Pasta do CSS
+                    "/js/**", // Pasta do JS
+                    "/images/**" // Pasta de imagens
+                    ).permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

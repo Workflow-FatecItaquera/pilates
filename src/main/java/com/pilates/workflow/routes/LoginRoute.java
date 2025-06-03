@@ -27,13 +27,12 @@ public class LoginRoute {
 		boolean alunoValid = alunoService.login(email,senha);
 		boolean instrutorValid = instrutorService.login(email,senha);
 
-		if(alunoValid){
+		if(alunoValid || instrutorValid){
 			return "redirect:/dashboard";
-		} else if(instrutorValid){
-			return "redirect:/dashboard";
+		} else {
+			return "redirect:/login";
 		}
 
-		return "redirect:/login";
 	}
 
 }

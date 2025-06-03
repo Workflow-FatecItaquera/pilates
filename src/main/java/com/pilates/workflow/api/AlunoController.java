@@ -1,4 +1,4 @@
-package com.pilates.workflow.controller;
+package com.pilates.workflow.api;
 
 import java.util.List;
 
@@ -22,7 +22,6 @@ public class AlunoController {
 	@Autowired
 	private AlunoService alunoService;
 
-	
 	@GetMapping("/alunos")
 	public List<Aluno> getAllAlunos(){
 		return alunoService.getAll();

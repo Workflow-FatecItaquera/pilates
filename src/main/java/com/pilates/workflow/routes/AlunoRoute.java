@@ -27,10 +27,14 @@ public class AlunoRoute {
 		return "cadastrarAluno";
 	}
 
-	@PostMapping("/backend/aluno")
+	@PostMapping("/create/aluno")
 	public String createAluno(@ModelAttribute("aluno") Aluno aluno) {
-		alunoService.register(aluno);
-		return "redirect:/";
+		try {
+			Aluno cadastrado = alunoService.register(aluno);
+			return "redirect:/";
+		} catch (Exception e) {
+			return "redirect:/cadastrarAluno";
+		}
 	}
 	
 }
