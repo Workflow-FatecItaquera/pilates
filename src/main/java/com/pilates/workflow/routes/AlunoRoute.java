@@ -38,7 +38,7 @@ public class AlunoRoute {
 		try {
 			String token = tokenService.generatePasswordToken(aluno.getEmail());
 			Aluno cadastrado = alunoService.register(aluno);
-			emailService.criacaoSenhaAluno(cadastrado, token);
+			emailService.criacaoSenha(cadastrado, token);
 			
 			redirectAttributes.addFlashAttribute("cadastroFeito",true);
 			return "redirect:/login";

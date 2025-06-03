@@ -7,6 +7,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.pilates.workflow.model.Aluno;
+import com.pilates.workflow.model.Instrutor;
 
 @Service
 public class EmailService {
@@ -20,14 +21,29 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String remetente;
 
-    public boolean criacaoSenhaAluno(Aluno aluno, String token){
+    public boolean criacaoSenha(Aluno aluno, String token){
         try {
 
             SimpleMailMessage smm = new SimpleMailMessage();
             smm.setFrom(remetente);
             smm.setTo(aluno.getEmail());
             smm.setSubject("Crie a sua senha para completar seu cadastro!");
-            smm.setText("Crie sua senha acessando "+site_url+"/alunoSenha?token="+token);
+            smm.setText("Crie sua senha acessando "+local_url+"/alunoSenha?token="+token);
+            mailSender.send(smm);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean criacaoSenha(Instrutor instrutor, String token){
+        try {
+
+            SimpleMailMessage smm = new SimpleMailMessage();
+            smm.setFrom(remetente);
+            smm.setTo(instrutor.getEmail());
+            smm.setSubject("Crie a sua senha para completar seu cadastro!");
+            smm.setText("Crie sua senha acessando "+local_url+"/instrutorSenha?token="+token);
             mailSender.send(smm);
             return true;
         } catch (Exception e) {
