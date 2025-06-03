@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pilates.workflow.service.AssinaturaService;
 import com.pilates.workflow.service.EmailService;
@@ -33,13 +34,16 @@ public class AlunoRoute {
 	}
 
 	@PostMapping("/create/aluno")
-	public String createAluno(@ModelAttribute("aluno") Aluno aluno) {
+	public String createAluno(@ModelAttribute("aluno") Aluno aluno, RedirectAttributes redirectAttributes) {
 		try {
 			String token = tokenService.generatePasswordToken(aluno.getEmail());
 			Aluno cadastrado = alunoService.register(aluno);
 			emailService.criacaoSenhaAluno(cadastrado, token);
+			
+			redirectAttributes.addFlashAttribute("cadastroFeito",true);
 			return "redirect:/login";
 		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("cadastroErrado",true);
 			return "redirect:/cadastrarAluno";
 		}
 	}
