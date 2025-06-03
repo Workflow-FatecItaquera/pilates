@@ -3,6 +3,8 @@ function mascaraCPF(campo) {
 
     cpf = cpf.replace(/\D/g, '')
 
+    cpf = cpf.substring(0, 11);
+
     if (cpf.length <= 11) {
         cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
         cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2')
@@ -18,6 +20,7 @@ function mascaraCEP(campo) {
 
     cep = cep.replace(/\D/g, '');
 
+    cep = cep.substring(0, 8);
 
     if (cep.length <= 8) {
         cep = cep.replace(/(\d{5})(\d)/, '$1-$2');
@@ -28,7 +31,6 @@ function mascaraCEP(campo) {
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             document.querySelector('#endereco-logradouro').value = data.logradouro
             document.querySelector('#endereco-bairro').value = data.bairro
             document.querySelector('#endereco-cidade').value = data.localidade
@@ -56,8 +58,12 @@ function mascaraCelular(campo) {
 }
 
 function atualizarAssinaturaSelecionada() {
-    let assinatura = document.querySelector("#select-assinatura")
-    document.querySelector("#form-assinatura").innerText = ` Você selecionou a assinatura ${assinatura.options[assinatura.selectedIndex].text}`;
+    try {   
+        let assinatura = document.querySelector("#select-assinatura")
+        document.querySelector("#form-assinatura").innerText = ` Você selecionou a assinatura ${assinatura.options[assinatura.selectedIndex].text}`;
+    } catch (error) {
+        
+    }
 }
 
 window.addEventListener("DOMContentLoaded", atualizarAssinaturaSelecionada);

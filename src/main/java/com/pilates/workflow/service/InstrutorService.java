@@ -33,6 +33,9 @@ public class InstrutorService {
 	}
 	
 	public Instrutor register(Instrutor instrutor) {
+		if(instrutor.getSenha()!=null){
+			instrutor.setSenha(encoder.encode(instrutor.getSenha()));
+		}
 		return instrutorRepository.save(instrutor);
 	}
 	

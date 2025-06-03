@@ -11,37 +11,37 @@
 	<th:block th:replace="fragments/header :: header"></th:block>
 	
 	<div class="box-linear d-flex flex-column align-items-center">
-		<form id="box-cadastrar-instrutor" action="#" method="post">
+		<form id="box-cadastrar-instrutor" th:object="${instrutor}" th:action="@{/create/instrutor}" method="post">
 			<div class="form-cadastro d-flex flex-column gap-2" data-aos="fade-up" data-aos-duration="1000">
 				<h4>Informações pessoais</h4>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Nome</label>
-						<input type="text" name="nome">
+						<input type="text" th:field="*{nome}" name="nome" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Sobrenome</label>
-						<input type="text" name="sobrenome">
+						<input type="text" th:field="*{sobrenome}" name="sobrenome" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>E-mail</label>
-						<input type="text" name="email">
+						<input type="email" th:field="*{email}" name="email" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CPF</label>
-						<input type="text" name="cpf">
+						<input type="text" name="cpf" th:field="*{cpf}" oninput="mascaraCPF(this)" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Telefone</label>
-						<input type="text" name="telefone">
+						<input type="text" name="telefone" th:field="*{telefone}" oninput="mascaraCelular(this)" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Data de nascimento</label>
-						<input type="date" name="data-nascimento">
+						<input type="date" name="data-nascimento" th:field="*{dataNascimento}" required>
 					</div>
 				</div>
 			</div>
@@ -51,37 +51,37 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Endereço</label>
-						<input type="text" name="endereco">
+						<input type="text" name="endereco" th:field="*{endereco.logradouro}" id="endereco-logradouro" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CEP</label>
-						<input type="text" name="cep">
+						<input type="text" name="cep" th:field="*{endereco.cep}" oninput="mascaraCEP(this)" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Número</label>
-						<input type="text" name="numero">
+						<input type="number" name="numero" th:field="*{endereco.numero}" id="endereco-numero" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Bairro</label>
-						<input type="text" name="bairro">
+						<input type="text" name="bairro" th:field="*{endereco.bairro}" id="endereco-bairro" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Cidade</label>
-						<input type="text" name="cidade">
+						<input type="text" name="cidade" th:field="*{endereco.cidade}" id="endereco-cidade" required>
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Estado</label>
-						<input type="text" name="estado">
+						<input type="text" name="estado" th:field="*{endereco.estado}" id="endereco-estado" required>
 					</div>
 				</div>
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Complemento (opcional)</label>
-						<input style="min-width: 36rem;" type="text" name="complemento">
+						<input style="min-width: 36rem;" th:field="*{endereco.complemento}" type="text" name="complemento">
 					</div>
 				</div>
 				<div class="d-flex flex-col justify-content-between align-items-end">
@@ -98,5 +98,18 @@
 	</script>
 	<th:block th:replace="fragments/footer :: footer"></th:block>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+	<script th:src="@{/js/sweetalert.js}"></script>
+	<script th:if="${cadastroErrado}">
+		Swal.fire({
+			title:'Houve um erro no cadastro!',
+			text:'Algo impediu seu cadastro de acontecer. Tente novamente!',
+			icon:'error',
+			allowOutsideClick: false,
+			allowEscapeKey: false
+		})
+	</script>
+	<script th:src="@{/js/formHandler.js}">
+	</script>
 </body>
 </html>
