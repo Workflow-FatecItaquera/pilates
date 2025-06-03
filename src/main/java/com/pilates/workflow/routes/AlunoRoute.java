@@ -32,7 +32,8 @@ public class AlunoRoute {
 	@PostMapping("/create/aluno")
 	public String createAluno(@ModelAttribute("aluno") Aluno aluno) {
 		try {
-			alunoService.register(aluno);
+			Aluno cadastrado = alunoService.register(aluno);
+			emailService.criacaoSenha(cadastrado.getEmail());
 			return "redirect:/";
 		} catch (Exception e) {
 			return "redirect:/cadastrarAluno";
