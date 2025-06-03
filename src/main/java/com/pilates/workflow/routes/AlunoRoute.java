@@ -17,7 +17,9 @@ public class AlunoRoute {
 
 	@Autowired
 	private AssinaturaService assinaturaService;
+	@Autowired
 	private AlunoService alunoService;
+	@Autowired
 	private EmailService emailService;
 
 	@GetMapping("/cadastrarAluno")
@@ -30,7 +32,7 @@ public class AlunoRoute {
 	@PostMapping("/create/aluno")
 	public String createAluno(@ModelAttribute("aluno") Aluno aluno) {
 		try {
-			Aluno cadastrado = alunoService.register(aluno);
+			alunoService.register(aluno);
 			return "redirect:/";
 		} catch (Exception e) {
 			return "redirect:/cadastrarAluno";
