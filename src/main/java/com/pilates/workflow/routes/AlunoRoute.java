@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.pilates.workflow.service.AssinaturaService;
 import com.pilates.workflow.service.EmailService;
 import com.pilates.workflow.service.AlunoService;
+import com.pilates.workflow.service.TokenService;
 import com.pilates.workflow.model.Aluno;
 
 @Controller
@@ -21,6 +22,8 @@ public class AlunoRoute {
 	private AlunoService alunoService;
 	@Autowired
 	private EmailService emailService;
+	@Autowired
+	private TokenService tokenService;
 
 	@GetMapping("/cadastrarAluno")
 	public String cadastrarAluno(Model model) {
@@ -32,9 +35,10 @@ public class AlunoRoute {
 	@PostMapping("/create/aluno")
 	public String createAluno(@ModelAttribute("aluno") Aluno aluno) {
 		try {
+			String token = tokenService.generatePasswordToken(aluno.getEmail());
 			Aluno cadastrado = alunoService.register(aluno);
-			emailService.criacaoSenha(cadastrado.getEmail());
-			return "redirect:/";
+			emailService.criacaoSenhaAluno(cadastrado, token);
+			return "redirect:/login";
 		} catch (Exception e) {
 			return "redirect:/cadastrarAluno";
 		}
