@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import com.pilates.workflow.model.Aluno;
 
 @Controller
-public class agendaRoute {
+public class AgendaRoute {
 
 	@GetMapping("/cadastrarAula")
 	public String cadastrarAula(Model model) {
