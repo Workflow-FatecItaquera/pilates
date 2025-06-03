@@ -12,8 +12,9 @@ import com.pilates.workflow.model.Instrutor;
 @Service
 public class EmailService {
 
-    private String local_url = "http://localhost:8080";
-    private String site_url = "https://pilates-s9q6.onrender.com";
+    // private String local_url = "http://localhost:8080";
+    // private String site_url = "https://pilates-s9q6.onrender.com";
+    private String url = "https://pilates-s9q6.onrender.com";
 
     @Autowired
     private JavaMailSender mailSender;
@@ -28,7 +29,7 @@ public class EmailService {
             smm.setFrom(remetente);
             smm.setTo(aluno.getEmail());
             smm.setSubject("Crie a sua senha para completar seu cadastro!");
-            smm.setText("Crie sua senha acessando "+local_url+"/alunoSenha?token="+token);
+            smm.setText("Crie sua senha acessando "+url+"/alunoSenha?token="+token);
             mailSender.send(smm);
             return true;
         } catch (Exception e) {
@@ -43,7 +44,7 @@ public class EmailService {
             smm.setFrom(remetente);
             smm.setTo(instrutor.getEmail());
             smm.setSubject("Crie a sua senha para completar seu cadastro!");
-            smm.setText("Crie sua senha acessando "+local_url+"/instrutorSenha?token="+token);
+            smm.setText("Crie sua senha acessando "+url+"/instrutorSenha?token="+token);
             mailSender.send(smm);
             return true;
         } catch (Exception e) {
