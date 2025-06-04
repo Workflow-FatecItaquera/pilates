@@ -14,6 +14,6 @@ public class HomeRoute {
 	
 	@GetMapping("/assinaturas")
 	public String assinaturas() {
-		return "redirect:/"; //Vai renderizar os planos disponíveis.
+		return "redirect:/cadastrarAluno"; //Vai renderizar os planos disponíveis.
 	}
 }
