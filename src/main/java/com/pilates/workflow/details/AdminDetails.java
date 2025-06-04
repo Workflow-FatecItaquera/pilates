@@ -1,15 +1,12 @@
 package com.pilates.workflow.details;
 
-import org.apache.catalina.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import com.pilates.workflow.model.Admin;
-import com.pilates.workflow.model.Aluno;
 
 public class AdminDetails implements UserDetails {
 
