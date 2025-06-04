@@ -1,10 +1,12 @@
 package com.pilates.workflow.details;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import com.pilates.workflow.model.Instrutor;
 
@@ -18,9 +20,7 @@ public class InstrutorDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Se você quiser adicionar uma role, como ROLE_INSTRUTOR:
-        // return List.of(new SimpleGrantedAuthority("ROLE_INSTRUTOR"));
-        return Collections.emptyList();
+        return List.of(new SimpleGrantedAuthority("ROLE_INSTRUTOR"));
     }
 
     @Override
