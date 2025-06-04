@@ -19,10 +19,11 @@
 				<button class="botao botao-preto">Agendar uma aula</button>
 				<button class="botao botao-preto">Fazer uma publicação</button>
 				<button class="botao botao-preto">Editar minhas informações</button>
+				<a th:href="@{/logout}" class="botao botao-preto">Deslogar</a>
 			</div>
 			
 			<div id="secoes-dashboard d-flex flex-column align-items-center">
-				<div class="secoes administrador d-flex flex-row justify-content-center align-items-center gap-5">
+				<div th:if="${isAdmin}" class="secoes administrador d-flex flex-row justify-content-center align-items-center gap-5">
 					<div class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Alunos</h5>
 						<img class="secao-imagem" th:src="@{/images/alunos.svg}" alt="Seção">
@@ -41,7 +42,7 @@
 				</div>
 				
 				
-				<div class="secoes instrutor d-flex flex-row justify-content-center align-items-center gap-5">
+				<div th:if="${isInstrutor}" class="secoes instrutor d-flex flex-row justify-content-center align-items-center gap-5">
 					<div class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Turmas</h5>
 						<img class="secao-imagem" th:src="@{/images/turmas.svg}" alt="Seção">
@@ -60,7 +61,7 @@
 					</div>
 				</div>
 				
-				<div class="secoes aluno  d-flex flex-row justify-content-center align-items-center gap-5">
+				<div th:if="${isAluno}" class="secoes aluno  d-flex flex-row justify-content-center align-items-center gap-5">
 					<div class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Agendamento</h5>
 						<img class="secao-imagem" th:src="@{/images/agendamento.svg}" alt="Seção">
