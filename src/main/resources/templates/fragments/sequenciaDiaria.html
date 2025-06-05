@@ -1,4 +1,4 @@
-<div id="sequenciaDiaria" class="d-flex" th:fragment="sequenciaDiaria">
+<div id="sequenciaDiaria" class="d-flex" th:fragment="sequenciaDiaria" th:if="${tipo == 'Aluno' and (perfil.plano.nome == 'Pilates Premium' or perfil.plano.nome == 'Pilates Amateur')}">
 	<h2>Sequencia de dias:</h2>
-	<h1>{dias}</h1>
+	<h1 th:text="${perfil.historico != null} ? ${perfil.historico} : '0'"></h1>
 </div>
