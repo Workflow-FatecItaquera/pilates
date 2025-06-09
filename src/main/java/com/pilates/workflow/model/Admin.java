@@ -11,6 +11,8 @@ public class Admin {
     private String email;
     private String senha;
 
+    public Admin(){}
+
     public Admin(String id){
         this.id = id;
     }
@@ -20,7 +22,7 @@ public class Admin {
         this.senha = senha;
     }
 
-    public Admin(String id,String email, String senha){
+    public Admin(String id, String email, String senha){
         this.id = id;
         this.email = email;
         this.senha = senha;

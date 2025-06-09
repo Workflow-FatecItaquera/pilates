@@ -26,6 +26,7 @@ public class AccessConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/", // Homepage
+                    // "/admin/**", 
                     "/assinaturas", // Assinaturas
                     "/api/**", // Rotas da API REST
                     "/cadastrarAluno", // Form de cadastro dos alunos
@@ -42,7 +43,8 @@ public class AccessConfig {
                     "/js/**", // Pasta do JS
                     "/images/**" // Pasta de imagens
                     ).permitAll()
-                .anyRequest().authenticated()
+
+                    .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")

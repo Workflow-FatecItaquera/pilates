@@ -30,7 +30,7 @@ public class LoginService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // Exemplo simplificado
         if (alunoService.existsByEmail(email)) {
-            return new AlunoDetails(alunoService.getByEmail(email)); // deve retornar um objeto que implementa UserDetails
+            return new AlunoDetails(alunoService.getByEmail(email));
         } else if (instrutorService.existsByEmail(email)) {
             return new InstrutorDetails(instrutorService.getByEmail(email));
         } else if(adminService.existsByEmail(email)){

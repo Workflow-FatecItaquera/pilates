@@ -1,5 +1,7 @@
 package com.pilates.workflow.service;
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class AdminService {
     public Admin getById(String id) {
 		return adminRepository.findById(id)
 				.orElseThrow(()-> new EntityNotFoundException("Aluno com ID '"+id+"' não foi encontrado."));
+	}
+
+	public List<Admin> getAll(){
+		return adminRepository.findAll();
 	}
 
 	public boolean existsByEmail(String email){
