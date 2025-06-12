@@ -17,9 +17,9 @@
 			<hr>
 			<div class="secao-botoes">
 				<a th:href="@{/logout}" class="botao botao-preto">Deslogar</a>
-				<button class="botao botao-preto">Agendar uma aula</button>
-				<button class="botao botao-preto">Fazer uma publicação</button>
-				<button class="botao botao-preto">Editar minhas informações</button>
+				<a th:if="${isInstrutor}" th:href="@{/cadastrarAula}" class="botao botao-preto">Agendar uma aula</a>
+				<a th:href="@{/}" class="botao botao-preto">Fazer uma publicação</a>
+				<a th:href="@{/perfil}" class="botao botao-preto">Editar minhas informações</a>
 			</div>
 			
 			<div id="secoes-dashboard d-flex flex-column align-items-center">
