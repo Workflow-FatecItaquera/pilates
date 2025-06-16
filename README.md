@@ -9,12 +9,14 @@ Este repositório contém um projeto desenvolvido com o framework Springboot ali
 <div align="center">
 
 ## Tecnologias utilizadas:
-[![My Skills](https://skillicons.dev/icons?i=spring,java,mongo,docker&theme=dark&perline=10)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=spring,java,html,css,js,mongo,docker&theme=dark&perline=10)](https://skillicons.dev)
 
 
 </div>
 
 - SPRING: Framework utilizado para o desenvolvimento web com JAVA
+    - THYMELEAF: Dependência do Sprint para renderização do front-end com HTML, CSS e JS.
+    - SPRING SECURITY: Proteção de rotas, lógica de login e criptografia de dados sensíveis.
 - MONGO: Banco de Dados Não-relacional escolhido pela alta escalabilidade e facilidade de uso
 - DOCKER: Ferramenta utilizada para a hospedagem do projeto dentro da plataforma https://render.com
 
