@@ -22,7 +22,7 @@ Este repositório contém um projeto desenvolvido com o framework Springboot ali
 
 <div align="center">
 
-## Links Relacionados
+## Links Relacionados:
 
 </div>
 
