@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Editar Instrutor</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/logoi.png}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 </head>
@@ -12,10 +13,12 @@
     
     <div class="box-linear d-flex flex-column align-items-center">
         <form id="box-cadastrar-instrutor"  method="post">
-            <input type="hidden" name="id" th:value="${instrutor.id}"/> <!-- Importante se tiver ID -->
+            <input type="hidden" name="id" th:value="${instrutor.id}"/> 
             
             <div class="form-cadastro d-flex flex-column gap-2" data-aos="fade-up" data-aos-duration="1000">
-                <h4>Informações pessoais</h4>
+                <div>
+                    <h3>Editar Informações de Instrutor</h3>
+                </div>
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Nome</label>
@@ -53,42 +56,42 @@
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Endereço</label>
-                        <input type="text" name="endereco" th:value="${instrutor.endereco}">
+                        <input type="text" name="endereco" th:value="${instrutor.endereco.logradouro}">
                     </div>
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>CEP</label>
-                        <input type="text" name="cep" th:value="${instrutor.cep}">
+                        <input type="text" name="cep" th:value="${instrutor.endereco.cep}">
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Número</label>
-                        <input type="text" name="numero" th:value="${instrutor.numero}">
+                        <input type="text" name="numero" th:value="${instrutor.endereco.numero}">
                     </div>
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Bairro</label>
-                        <input type="text" name="bairro" th:value="${instrutor.bairro}">
+                        <input type="text" name="bairro" th:value="${instrutor.endereco.bairro}">
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Cidade</label>
-                        <input type="text" name="cidade" th:value="${instrutor.cidade}">
+                        <input type="text" name="cidade" th:value="${instrutor.endereco.cidade}">
                     </div>
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Estado</label>
-                        <input type="text" name="estado" th:value="${instrutor.estado}">
+                        <input type="text" name="estado" th:value="${instrutor.endereco.estado}">
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <div class="box-input d-flex flex-column align-items-start gap-2">
                         <label>Complemento (opcional)</label>
-                        <input style="min-width: 36rem;" type="text" name="complemento" th:value="${instrutor.complemento}">
+                        <input style="min-width: 36rem;" type="text" name="complemento" th:value="${instrutor.endereco.complemento}">
                     </div>
                 </div>
                 <div class="d-flex flex-col justify-content-between align-items-center mt-4">
-                    <p class="link-info"><a>Para mais informações, clique aqui</a></p>
-                    <button class="botao botao-preto" type="submit">Cadastrar</button>
+                    <p class="link-info"><a>Cancelar</a></p>
+                    <button class="botao botao-preto" type="submit">Salvar Informações</button>
                 </div>
             </div>
         </form>
