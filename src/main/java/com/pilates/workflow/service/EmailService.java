@@ -13,7 +13,6 @@ import com.pilates.workflow.model.Instrutor;
 public class EmailService {
 
     private String url = "http://localhost:8080";
-    // private String site_url = "https://pilates-s9q6.onrender.com";
     // private String url = "https://pilates-s9q6.onrender.com";
 
     @Autowired
