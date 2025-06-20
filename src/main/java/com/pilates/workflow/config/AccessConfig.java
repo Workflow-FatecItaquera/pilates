@@ -28,7 +28,7 @@ public class AccessConfig {
                     "/", // Homepage
                     // "/admin/**", 
                     "/assinaturas", // Assinaturas
-                    "/api/**", // Rotas da API REST
+                    "/api/**", // Rotas da API RestController
                     "/cadastrarAluno", // Form de cadastro dos alunos
                     "/create/aluno", // Ação de cadastro do aluno
                     "/alunoSenha", // Para criar a senha de um aluno

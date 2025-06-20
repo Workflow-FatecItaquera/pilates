@@ -16,9 +16,11 @@
 			<h1>Dashboard</h1>
 			<hr>
 			<div class="secao-botoes">
+				<a th:href="@{/logout}" class="botao botao-preto">Deslogar</a>
 				<a th:if="${isInstrutor}" th:href="@{/cadastrarAula}" class="botao botao-preto">Agendar uma aula</a>
 				<a th:href="@{/}" class="botao botao-preto">Fazer uma publicação</a>
-				<a th:href="@{/perfil}" class="botao botao-preto">Editar minhas informações</a>
+				<a th:if="${isAluno}" th:href="@{/editarAluno/{id}(id=${aluno.id})}" class="botao botao-preto">Editar minhas informações</a>
+				<a th:if="${isInstrutor}" th:href="@{/editarInstrutor/{id}(id=${instrutor.id})}" class="botao botao-preto">Editar minhas informações</a>
 				<a th:href="@{/logout}" class="botao botao-preto">Deslogar</a>
 			</div>
 			
