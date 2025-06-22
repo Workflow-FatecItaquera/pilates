@@ -55,6 +55,10 @@ public class AlunoService {
 		}
 		return alunoRepository.save(aluno);
 	}
+
+	public Aluno update(Aluno aluno){
+		return alunoRepository.save(aluno);
+	}
 	
 	public void delete(String id) {
 		alunoRepository.deleteById(id);

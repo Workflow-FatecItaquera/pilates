@@ -38,6 +38,10 @@ public class InstrutorService {
 		}
 		return instrutorRepository.save(instrutor);
 	}
+
+	public Instrutor update(Instrutor instrutor){
+		return instrutorRepository.save(instrutor);
+	}
 	
 	public void delete(String id) {
 		instrutorRepository.deleteById(id);
