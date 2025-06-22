@@ -37,6 +37,8 @@ public class AccessConfig {
                     "/create/instrutor", // Ação de cadastro do instrutor
                     "/instrutorSenha", // Para criar a senha de um instrutor
                     "/instrutor/senha",// Ação de criar a senha de um instrutor
+                    "/update/aluno", // pra atualizar aluno :(
+                    "/update/instrutor", // pra atualizar aluno :(
                     "/login", // Tela de login
                     "/logar", // Ação do login
                     "/css/**", // Pasta do CSS

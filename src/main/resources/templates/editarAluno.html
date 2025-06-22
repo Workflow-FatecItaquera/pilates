@@ -14,9 +14,9 @@
 	<th:block th:replace="fragments/header :: header"></th:block>
 
 	<div class="box-linear d-flex flex-column align-items-center">
-		<form method="post">
-			<input type="hidden" name="_method" value="put"/>
-			<input type="hidden" name="id" th:value="${aluno.id}" />
+		<form method="post" th:object="${aluno}" th:action="@{/update/aluno}">
+			<input type="hidden" name="id" th:field="*{id}" th:value="${aluno.id}" />
+			<input type="hidden" name="senha" th:field="*{senha}" th:value="${aluno.senha}" />
 
 			<div class="form-cadastro d-flex flex-column gap-2" data-aos="fade-up" data-aos-duration="1000">
 				<div class="d-flex flex-row justify-content-between align-items-center">
@@ -27,34 +27,36 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CPF</label>
-						<input type="text" name="cpf" th:value="${aluno.cpf}">
+						<input type="text" name="cpf" th:field="*{cpf}"  th:value="${aluno.cpf}" oninput="mascaraCPF(this)">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>E-mail</label>
-						<input type="text" name="email" th:value="${aluno.email}">
+						<input type="text" name="email" th:field="*{email}"  th:value="${aluno.email}">
 					</div>
 				</div>
 
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Nome</label>
-						<input type="text" name="nome" th:value="${aluno.nome}">
+						<input type="text" name="nome" th:field="*{nome}"  th:value="${aluno.nome}">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Data de nascimento</label>
 						<input type="date" name="dataNascimento"
-							th:value="${#dates.format(aluno.dataNascimento, 'yyyy-MM-dd')}">
+							th:value="${#dates.format(aluno.dataNascimento, 'yyyy-MM-dd')}"
+							th:field="*{dataNascimento}" >
+							
 					</div>
 				</div>
 
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Sobrenome</label>
-						<input type="text" name="sobrenome" th:value="${aluno.sobrenome}">
+						<input type="text" name="sobrenome" th:field="*{sobrenome}"  th:value="${aluno.sobrenome}">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Assinatura</label>
-						<select id="select-assinatura" name="assinaturas">
+						<select id="select-assinatura" th:field="*{plano}"  name="assinaturas">
 							<option th:each="assinatura : ${assinaturas}" th:value="${assinatura.id}"
 								th:text="|R$ ${#numbers.formatDecimal(assinatura.valor, 1, 'COMMA', 2, 'POINT')} - ${assinatura.nome}|"
 								th:selected="${aluno.plano != null} ? ${assinatura.id.equals(aluno.plano.id)} : false">
@@ -66,44 +68,44 @@
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Telefone</label>
-						<input type="text" name="telefone" th:value="${aluno.telefone}">
+						<input type="text" name="telefone" th:field="*{telefone}"  th:value="${aluno.telefone}" oninput="mascaraCelula(this)">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Endereço</label>
-						<input type="text" name="endereco" th:value="${aluno.endereco.logradouro}">
+						<input id="endereco-logradouro" type="text" name="endereco" th:field="*{endereco.logradouro}" th:value="${aluno.endereco.logradouro}">
 					</div>
 				</div>
 
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>CEP</label>
-						<input type="text" name="cep" th:value="${aluno.endereco.cep}">
+						<input id="endereco-cep" type="text" name="cep" th:field="*{endereco.cep}"  th:value="${aluno.endereco.cep}" oninput="mascaraCEP(this)">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Número</label>
-						<input type="text" name="numero" th:value="${aluno.endereco.numero}">
+						<input type="text" name="numero" th:field="*{endereco.numero}" th:value="${aluno.endereco.numero}">
 					</div>
 				</div>
 
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Estado</label>
-						<input type="text" name="estado" th:value="${aluno.endereco.estado}">
+						<input id="endereco-estado" type="text" name="estado" th:field="*{endereco.estado}" th:value="${aluno.endereco.estado}">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Cidade</label>
-						<input type="text" name="cidade" th:value="${aluno.endereco.cidade}">
+						<input id="endereco-cidade" type="text" name="cidade" th:field="*{endereco.cidade}" th:value="${aluno.endereco.cidade}">
 					</div>
 				</div>
 
 				<div class="d-flex flex-row justify-content-between align-items-center">
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Bairro</label>
-						<input type="text" name="bairro" th:value="${aluno.endereco.bairro}">
+						<input id="endereco-bairro" type="text" name="bairro" th:field="*{endereco.bairro}" th:value="${aluno.endereco.bairro}">
 					</div>
 					<div class="box-input d-flex flex-column align-items-start gap-2">
 						<label>Complemento</label>
-						<input type="text" name="complemento" th:value="${aluno.endereco.complemento}">
+						<input type="text" name="complemento" th:field="*{endereco.complemento}" th:value="${aluno.endereco.complemento}">
 					</div>
 				</div>
 
@@ -120,6 +122,7 @@
 		AOS.init();
 	</script>
 	<th:block th:replace="fragments/footer :: footer"></th:block>
+	<script th:src="@{/js/formHandler.js}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
 		crossorigin="anonymous"></script>
