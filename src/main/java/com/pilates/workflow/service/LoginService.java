@@ -22,10 +22,6 @@ public class LoginService implements UserDetailsService {
     @Autowired
     private InstrutorService instrutorService;
 
-    LoginService(AdminService adminService) {
-        this.adminService = adminService;
-    }
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // Exemplo simplificado

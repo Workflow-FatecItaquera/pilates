@@ -17,7 +17,7 @@ public class AdminService {
 
     @Autowired
     AdminRepository adminRepository;
-    PasswordEncoder encoder = new BCryptPasswordEncoder();
+	PasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public Admin getById(String id) {
 		return adminRepository.findById(id)
