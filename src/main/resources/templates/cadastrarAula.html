@@ -23,9 +23,8 @@
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Instrutor</label>
 					<select id="select-instrutor" name="instrutores"> <!-- Deixe o usuário por padrão, que no caso será o instrutor logado na sessão -->
-						<option th:value="'idagostinho'" th:text="'Agostinho Benigno'"></option>						
-						<option th:value="'morramarcus'" th:text="'Marcus Vasconcelos'"></option>
-						<option th:value="'idaragao'" th:text="'Daniel Aragão'"></option>
+						<option th:each="instrutor_s : ${instrutores}" th:value="${instrutor_s.id}" th:text="|${instrutor_s.nome} ${instrutor_s.sobrenome}|"
+						th:selected="${instrutor.id != null} ? ${instrutor_s.id.equals(instrutor.id)} : false"></option>
 					</select>
 				</div>
 				<div class="box-input d-flex flex-column align-items-start gap-2">
