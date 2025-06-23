@@ -12,8 +12,8 @@ import com.pilates.workflow.model.Instrutor;
 @Service
 public class EmailService {
 
-    private String url = "http://localhost:8080";
-    // private String url = "https://pilates-s9q6.onrender.com";
+    // private String url = "http://localhost:8080";
+    private String url = "https://pilates-s9q6.onrender.com";
 
     @Autowired
     private JavaMailSender mailSender;
