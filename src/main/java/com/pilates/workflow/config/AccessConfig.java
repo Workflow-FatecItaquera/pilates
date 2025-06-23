@@ -26,7 +26,7 @@ public class AccessConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/", // Homepage
-                    // "/admin/**", 
+                    "/admin/**", 
                     "/assinaturas", // Assinaturas
                     "/api/**", // Rotas da API RestController
                     "/cadastrarAluno", // Form de cadastro dos alunos

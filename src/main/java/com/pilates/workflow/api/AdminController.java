@@ -32,7 +32,6 @@ public class AdminController {
 
     @PostMapping("/register")
     public Admin criar(@RequestBody Admin admin) {
-        admin.setSenha(encoder.encode(admin.getSenha()));
         return adminService.register(admin);
     }
 

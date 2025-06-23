@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class AlunoService {
 	
 	@Autowired
 	AlunoRepository alunoRepository;
-	PasswordEncoder encoder = new BCryptPasswordEncoder();
+	PasswordEncoder encoder;
 	
 	public List<Aluno> getAll(){
 		return alunoRepository.findAll();
