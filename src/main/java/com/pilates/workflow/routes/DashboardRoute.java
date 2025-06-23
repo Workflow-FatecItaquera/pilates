@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.pilates.workflow.details.AdminDetails;
 import com.pilates.workflow.details.AlunoDetails;
 import com.pilates.workflow.details.InstrutorDetails;
+import com.pilates.workflow.model.Admin;
 import com.pilates.workflow.model.Aluno;
 import com.pilates.workflow.model.Instrutor;
 
@@ -18,6 +20,7 @@ public class DashboardRoute {
 
 		boolean isAluno = auth.getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_ALUNO"));
 		boolean isInstrutor = auth.getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_INSTRUTOR"));
+		boolean isAdmin = auth.getAuthorities().stream().anyMatch(a->a.getAuthority().equals("ROLE_ADMIN"));
 
 		model.addAttribute("isAluno", isAluno);
 		if(isAluno){
@@ -30,6 +33,12 @@ public class DashboardRoute {
 			InstrutorDetails details = (InstrutorDetails) auth.getPrincipal();
 			Instrutor instrutor = details.getInstrutor();
 			model.addAttribute("instrutor", instrutor);
+		}
+		model.addAttribute("isAdmin", isAdmin);
+		if(isAdmin){
+			AdminDetails details = (AdminDetails) auth.getPrincipal();
+			Admin admin = details.getAdmin();
+			model.addAttribute("admin", admin);
 		}
 
 		return "dashboard";
