@@ -66,4 +66,9 @@ function atualizarAssinaturaSelecionada() {
     }
 }
 
+function mascaraData(data){
+    let split_d = data.split('-')
+    return `${split_d[2]}/${split_d[1]}/${split_d[0]}`
+}
+
 window.addEventListener("DOMContentLoaded", atualizarAssinaturaSelecionada);

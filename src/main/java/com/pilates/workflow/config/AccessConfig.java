@@ -33,12 +33,10 @@ public class AccessConfig {
                     "/create/aluno", // Ação de cadastro do aluno
                     "/alunoSenha", // Para criar a senha de um aluno
                     "/aluno/senha",// Ação de criar a senha de um aluno
-                    "/create/instrutor", // Ação de cadastro do instrutor
                     "/instrutorSenha", // Para criar a senha de um instrutor
                     "/instrutor/senha",// Ação de criar a senha de um instrutor
-                    "/update/aluno", // pra atualizar aluno :(
-                    "/update/instrutor", // pra atualizar aluno :(
                     "/login", // Tela de login
+                    "/perfil/{id}", // Perfil dos usuários
                     "/logar", // Ação do login
                     "/css/**", // Pasta do CSS
                     "/js/**", // Pasta do JS

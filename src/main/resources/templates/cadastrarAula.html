@@ -13,7 +13,8 @@
 <body>
 	<th:block th:replace="fragments/header :: header"></th:block>
 	 <div class="box-linear d-flex flex-column align-items-center">
-	 <form id="cadastroAula" method="post">
+	 <form id="cadastroAula" th:action="@{/create/aula}" method="post" th:object="${evento}">
+		<input style="display: none;" type="date" th:field="*{data}" name="dataAula" id="data-aula">
 	 	<div class="form-cadastro d-flex flex-column gap-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
 	 		<div class="d-flex flex-row justify-content-between align-items-center">
 				<h4>Informações de agendamento</h4>
@@ -22,14 +23,14 @@
 			<div class="d-flex flex-row justify-content-between align-items-center">
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Instrutor</label>
-					<select id="select-instrutor" name="instrutores"> <!-- Deixe o usuário por padrão, que no caso será o instrutor logado na sessão -->
+					<select required th:field="*{instrutor.id}" id="select-instrutor" name="instrutores"> <!-- Deixe o usuário por padrão, que no caso será o instrutor logado na sessão -->
 						<option th:each="instrutor_s : ${instrutores}" th:value="${instrutor_s.id}" th:text="|${instrutor_s.nome} ${instrutor_s.sobrenome}|"
 						th:selected="${instrutor.id != null} ? ${instrutor_s.id.equals(instrutor.id)} : false"></option>
 					</select>
 				</div>
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Sala</label>
-					<select id="select-salas" name="instrutores">
+					<select th:field="*{sala}" id="select-salas" name="instrutores" required>
 						<option th:value="'idsala1'" th:text="'Térreo: Sala 01'"></option>						
 						<option th:value="'idsala2'" th:text="'Pilates: Sala 02'"></option>
 						<option th:value="'idsala3'" th:text="'Espaço multidisciplinar: Sala 03'"></option>
@@ -40,16 +41,16 @@
 			<div class="d-flex flex-row justify-content-between align-items-center">			
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Horário de início</label>
-					<input type="time" name="horarioinicio">
+					<input th:field="*{horaInicio}" type="time" name="horarioinicio" required>
 				</div>
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Horário de término</label>
-					<input type="time" name="horariotermino">
+					<input th:field="*{horaTermino}" type="time" name="horariotermino" required>
 				</div>		
 			</div>
 				<div class="box-input d-flex flex-column align-items-start gap-2">
 					<label>Tipo de Aula</label>
-					<select id="tipoAula" name="tipoAula">
+					<select required th:field="*{tipo}" id="tipoAula" name="tipoAula">
 						<option th:value="'solo'" th:text="'Pilates Solo'"></option>
 						 <option th:value="'aparelhos'" th:text="'Pilates com Aparelhos'"></option>
 						 <option th:value="'dupla'" th:text="'Pilates em Dupla'"></option>
@@ -69,6 +70,7 @@
 	 			<div class="d-flex flex-column align-items-start gap-2">
 				<h4>Data de agendamento</h4>
 				<p>Escolha uma data válida para disponibilizar o agendamento de aula.</p>
+				<p id="data-escolhida"></p>
 	 			</div>
 				<img class="icon secao" th:src="@{/images/icon-setabaixo.png}" alt="Seção">
 			</div>
@@ -89,7 +91,11 @@
 	        initialView: 'dayGridMonth',
 	        right: 'dayGridMonth,timeGridWeek,timeGridDay',
 	        locale: 'pt-br',
-	        selectable: true
+	        selectable: true,
+			dateClick: function(info){
+				document.querySelector('#data-aula').value = info.dateStr
+				document.querySelector('#data-escolhida').textContent = `A data escolhida é ${mascaraData(info.dateStr)}`
+			}
 	      });
 	
 	      calendar.render();
@@ -105,6 +111,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 	<script th:src="@{/js/sweetalert.js}"></script>
-	<script th:src="@{/js/login.js}"></script>
+	<script th:src="@{/js/formHandler.js}"></script>
+	<script th:src="@{/js/agendamento.js}"></script>
 </body>
 </html>
