@@ -1,6 +1,5 @@
 package com.pilates.workflow.model;
 
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +15,10 @@ public class EventoAgendado {
 	private String id;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
-	@DateTimeFormat(pattern = "HH:mm")
-	private LocalTime horaInicio;
-	@DateTimeFormat(pattern = "HH:mm")
-	private LocalTime horaTermino;
+	// @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private String horaInicio;
+	// @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private String horaTermino;
     private String sala;
     private List<String> alunos;
     @DBRef
@@ -29,7 +28,7 @@ public class EventoAgendado {
     public EventoAgendado() {}
 
 	public EventoAgendado(String id, Date data, String sala, List<String> alunos, Instrutor instrutor,
-			String tipo, LocalTime horaInicio, LocalTime horaTermino) {
+			String tipo, String horaInicio, String horaTermino) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -41,19 +40,19 @@ public class EventoAgendado {
 		this.horaTermino = horaTermino;
 	}
 
-	public LocalTime getHoraInicio(){
+	public String getHoraInicio(){
 		return horaInicio;
 	}
 
-	public void setHoraInicio(LocalTime horaInicio){
+	public void setHoraInicio(String horaInicio){
 		this.horaInicio = horaInicio;
 	}
 
-	public LocalTime getHoraTermino(){
+	public String getHoraTermino(){
 		return horaTermino;
 	}
 
-	public void setHoraTermino(LocalTime horaTermino){
+	public void setHoraTermino(String horaTermino){
 		this.horaTermino = horaTermino;
 	}
 
