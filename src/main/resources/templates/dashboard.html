@@ -37,11 +37,11 @@
 						<img class="secao-imagem" th:src="@{/images/image-login.svg}" alt="Seção">
 						<p>Gerencie e planeje a agenda</p>				
 					</div>
-					<div class="secao d-flex flex-column align-items-center gap-2">
+					<a th:href="@{/cadastrarInstrutor}" class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Instrutores</h5>
 						<img class="secao-imagem" th:src="@{/images/instrutores.svg}" alt="Seção">
 						<p>Gerencie os instrutores</p>				
-					</div>
+					</a>
 				</div>
 				
 				
@@ -65,12 +65,11 @@
 				</div>
 				
 				<div th:if="${isAluno}" class="secoes aluno  d-flex flex-row justify-content-center align-items-center gap-5">
-					<div class="secao d-flex flex-column align-items-center gap-2">
+					<a th:href="@{/verAulas}" class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Agendamento</h5>
 						<img class="secao-imagem" th:src="@{/images/agendamento.svg}" alt="Seção">
 						<p>Participe das aulas</p>
-					
-					</div>
+					</a>
 					<div class="secao d-flex flex-column align-items-center gap-2">
 						<h5>Histograma de horário</h5>
 						<img class="secao-imagem" th:src="@{/images/image-login.svg}" alt="Seção">

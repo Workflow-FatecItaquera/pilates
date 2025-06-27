@@ -20,14 +20,14 @@ public class EventoAgendado {
 	// @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private String horaTermino;
     private String sala;
-    private List<String> alunos;
+    private List<Aluno> alunos;
     @DBRef
     private Instrutor instrutor;
     private String tipo;
 
     public EventoAgendado() {}
 
-	public EventoAgendado(String id, Date data, String sala, List<String> alunos, Instrutor instrutor,
+	public EventoAgendado(String id, Date data, String sala, List<Aluno> alunos, Instrutor instrutor,
 			String tipo, String horaInicio, String horaTermino) {
 		super();
 		this.id = id;
@@ -80,11 +80,11 @@ public class EventoAgendado {
 		this.sala = sala;
 	}
 
-	public List<String> getAlunos() {
+	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 
-	public void setAlunos(List<String> alunos) {
+	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
 

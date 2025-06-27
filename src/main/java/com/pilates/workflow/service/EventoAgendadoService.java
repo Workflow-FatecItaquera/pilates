@@ -19,6 +19,10 @@ public class EventoAgendadoService {
 	public List<EventoAgendado> getAll(){
 		return eventoAgendadoRepository.findAll();
 	}
+
+	public List<EventoAgendado> getByAluno(String id){
+		return eventoAgendadoRepository.findByAlunos_Id(id);
+	}
 	
 	public EventoAgendado getById(String id) {
 		return eventoAgendadoRepository.findById(id)

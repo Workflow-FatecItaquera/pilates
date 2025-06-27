@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aulas agendadas</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="icon" type="image/x-icon" th:href="@{/images/logoi.png}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:replace="fragments/header :: header"></th:block>
+	
+	<div class="box-linear d-flex flex-column align-items-center">
+		<div id="box-dashboard">
+			<h1>Minha agenda</h1>
+			<hr>
+			<div class="secao-botoes">
+				<a th:if="${isAluno}" th:href="@{/perfil/{id}(id=${aluno.id})}" class="botao botao-preto">Meu perfil</a>
+				<a th:if="${isInstrutor}" th:href="@{/perfil/{id}(id=${instrutor.id})}" class="botao botao-preto">Meu perfil</a>
+				<a th:if="${isInstrutor}" th:href="@{/cadastrarAula}" class="botao botao-preto">Agendar uma aula</a>
+				<a th:if="${isAluno}" th:href="@{/editarAluno/{id}(id=${aluno.id})}" class="botao botao-preto">Editar minhas informações</a>
+				<a th:if="${isInstrutor}" th:href="@{/editarInstrutor/{id}(id=${instrutor.id})}" class="botao botao-preto">Editar minhas informações</a>
+			</div>
+			
+			<div id="secoes-dashboard d-flex flex-column align-items-center">
+				<div class="secoes administrador d-flex flex-row justify-content-center align-items-center gap-5">
+					<div th:each="aula : ${suas}" class="secao d-flex flex-column align-items-center gap-2">
+						<h5 th:text="|Aula do instrutor ${aula.instrutor.nome}|"></h5>
+						<img class="secao-imagem" th:src="@{/images/alunos.svg}" alt="Seção">
+						<h6 th:text="|Dia ${#dates.format(aula.data, 'dd/MM/yyyy')}|"></h6>
+						<p th:text="|${aula.horaInicio} - ${aula.horaTermino}|"></p>
+						<a th:href="@{/sair/aula/{id}(id=${aula.id})}">Cancelar presença</a>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+			<h1>Aulas Disponíveis</h1>
+			<hr>
+			<div id="secoes-dashboard d-flex flex-column align-items-center">
+				<div class="secoes administrador d-flex flex-row justify-content-center align-items-center gap-5">
+					<div th:each="aula : ${aulas}" class="secao d-flex flex-column align-items-center gap-2">
+						<h5 th:text="|Aula do instrutor ${aula.instrutor.nome}|"></h5>
+						<img class="secao-imagem" th:src="@{/images/alunos.svg}" alt="Seção">
+						<h6 th:text="|Dia ${#dates.format(aula.data, 'dd/MM/yyyy')}|"></h6>
+						<p th:text="|${aula.horaInicio} - ${aula.horaTermino}|"></p>
+						<a th:href="@{/entrar/aula/{id}(id=${aula.id})}">Inscrever-se</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+	<script>
+	  AOS.init();
+	</script>
+	<th:block th:replace="fragments/footer :: footer"></th:block>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
